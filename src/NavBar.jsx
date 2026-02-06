@@ -1,31 +1,63 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import Container from "react-bootstrap/Container";
 
-function Navbar() {
+function NavBar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="container-fluid">
-        <a className="navbar-brand" href="#">MyApp</a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+    <Navbar bg="info" variant="dark" expand="lg" className="mb-4">
+      <Container className="justify-content-center">
+        <Navbar.Toggle aria-controls="main-navbar" />
+
+        <Navbar.Collapse
+          id="main-navbar"
+          className="justify-content-center text-center"
         >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            <li className="nav-item"><a className="nav-link" href="#">Home</a></li>
-            <li className="nav-item"><a className="nav-link" href="#">About</a></li>
-            <li className="nav-item"><a className="nav-link" href="#">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+          <Nav className="align-items-center">
+            <Navbar.Brand
+              as={NavLink}
+              to="/"
+              className="fw-bold mb-2 mb-lg-0"
+            >
+              Registration Form for Users
+            </Navbar.Brand>
+
+            <Nav.Link
+              as={NavLink}
+              to="/"
+              end
+              className={({ isActive }) =>
+                isActive ? "nav-link active fw-bold mx-3" : "nav-link mx-3"
+              }
+            >
+              Home
+            </Nav.Link>
+
+            <Nav.Link
+              as={NavLink}
+              to="/users"
+              className={({ isActive }) =>
+                isActive ? "nav-link active fw-bold mx-3" : "nav-link mx-3"
+              }
+            >
+              Users
+            </Nav.Link>
+
+            <Nav.Link
+              as={NavLink}
+              to="/about"
+              className={({ isActive }) =>
+                isActive ? "nav-link active fw-bold mx-3" : "nav-link mx-3"
+              }
+            >
+              About
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
 
-export default Navbar;
+export default NavBar;
